@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 
 // Setting CORS options
 const corsOptions = {
-  origin: "https://hospital-app-template.vercel.app", // Allow only your frontend URL
+  origin: "*", // Allow only your frontend URL
   credentials: true, // Allow cookies to be sent
   optionsSuccessStatus: 200, // For legacy browser support (IE11, various SmartTVs)
 };
