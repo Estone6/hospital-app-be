@@ -14,16 +14,17 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const corsOptions = { origin: true };
+// Setting CORS options
+const corsOptions = {
+  origin: "https://hospital-app-template.vercel.app", // Allow only your frontend URL
+  credentials: true, // Allow cookies to be sent
+  optionsSuccessStatus: 200, // For legacy browser support (IE11, various SmartTVs)
+};
 
-app.use(
-  cors({
-    origin: "https://hospital-app-template.vercel.app", // your frontend Vercel URL
-  })
-);
+app.use(cors(corsOptions)); // Use CORS with the options defined above
 
 app.get("/", (req, res) => {
-  res.send("Api is running...");
+  res.send("API is running...");
 });
 
 mongoose.set("strictQuery", false);
@@ -37,7 +38,8 @@ const connectionDB = async () => {
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors(corsOptions));
+
+// Routes
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/doctors", doctorRoute);
