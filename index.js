@@ -18,7 +18,7 @@ const corsOptions = { origin: true };
 
 app.use(
   cors({
-    origin: "https://hospital-app-template.vercel.app/", // your frontend Vercel URL
+    origin: "https://hospital-app-template.vercel.app", // your frontend Vercel URL
   })
 );
 
