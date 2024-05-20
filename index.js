@@ -16,6 +16,12 @@ const PORT = process.env.PORT || 3000;
 
 const corsOptions = { origin: true };
 
+app.use(
+  cors({
+    origin: "https://hospital-app-template.vercel.app/", // your frontend Vercel URL
+  })
+);
+
 app.get("/", (req, res) => {
   res.send("Api is running...");
 });
